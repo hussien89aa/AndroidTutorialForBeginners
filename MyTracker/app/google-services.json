@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1034447250869",
+    "firebase_url": "https://tracker-88e9c.firebaseio.com",
+    "project_id": "tracker-88e9c",
+    "storage_bucket": "tracker-88e9c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034447250869:android:93e8124636339096",
+        "android_client_info": {
+          "package_name": "com.alrubaye.mytracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034447250869-23ihnqlvd9nso7ncf4niccluvojujkc7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjXXxR3VC5t2j6SyR241U7dKcGcA473Do"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
