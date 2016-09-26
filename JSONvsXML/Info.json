@@ -1,0 +1,11 @@
+{
+	"name":"hussien",
+	"age":27,
+	"Langauges":["Android","iOS","C#","Java"],
+	"jobs":[
+		{ "Place":"NYC" ,"Title":"developer"  },
+		{ "Place":"CA" ,"Title":"tester"  },
+		{ "Place":"FL" ,"Title":"Manager"  }
+            ]
+
+}

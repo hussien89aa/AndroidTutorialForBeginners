@@ -1,0 +1,111 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="phonelocation.example.asuss550c.phonelocation.Note"
+    >
+
+    <LinearLayout
+        android:divider="@color/whitebackground"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView2" >
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/LLogin"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="5dp">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:touchscreenBlocksFocus="false"
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/LBTimeDElay">
+
+                    <ImageView
+                        android:layout_width="50pt"
+                        android:layout_height="50pt"
+                        android:src="@drawable/cover"
+                        android:id="@+id/imageView2" />
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="@string/AppWork"
+                        android:id="@+id/textView1"
+                        android:textColor="@color/white"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="30dp"
+                        android:textSize="20dp"
+                        android:textIsSelectable="true"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:touchscreenBlocksFocus="false"
+                    android:layout_marginBottom="3dp"
+                    android:layout_weight="0">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="@string/AppDescription"
+                        android:id="@+id/txtuserID"
+                        android:layout_weight="2"
+                        android:textColor="@color/white"
+                        android:paddingBottom="8dp"
+                        android:textSize="18dp"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:paddingTop="8dp"
+                        android:paddingLeft="8dp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="0"
+                    android:layout_marginTop="10dp"
+                    android:padding="6dp">
+
+
+                    <Button
+                        android:background="@drawable/green_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="30pt"
+                        android:text="@string/SelectList"
+                        android:id="@+id/BuSaveSetting"
+                        android:onClick="BuDismiss"
+                        android:textColor="#ff06071c"
+                        android:layout_weight="0"
+                        android:drawableLeft="@drawable/ic_add_white_24dp"
+                        android:layout_marginBottom="5dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>

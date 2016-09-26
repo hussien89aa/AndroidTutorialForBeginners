@@ -1,0 +1,103 @@
+// Realtime Database
+ 
+ 
+private   DatabaseReference   mDatabase ;       
+
+ mDatabase = FirebaseDatabase.getInstance().getReference();
+ 
+ DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        mDatabase.child("UsersUpdates").child(GlobalClass.UserUID).child("UpdateOrder").setValue(dateFormat.format(date).toString());
+ 
+   //check if there is update in order node
+        mDatabase.child("UsersUpdates").child("UpdateOrder").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+          
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                // Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+
+
+
+//Remote config
+
+add Xml file name "price_tool"
+<?xml version="1.0" encoding="utf-8"?>
+ <defaultsMap>
+    <enty>
+        <key>price</key>
+        <value>50 dolor</value>
+    </enty>
+
+</defaultsMap>
+
+Code  ro run
+
+
+ final FirebaseRemoteConfig mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+        mFirebaseRemoteConfig.setDefaults(R.xml.price_tool);
+       long exp=0;
+
+
+
+        mFirebaseRemoteConfig.fetch(exp).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    String price = mFirebaseRemoteConfig.getString("price");
+                    Toast.makeText(getApplicationContext(), price, Toast.LENGTH_LONG).show();
+                    mFirebaseRemoteConfig.activateFetched();
+                }
+            }
+        });
+
+
+        try{
+            int x=10/0;
+        }catch (Exception ex){
+            FirebaseCrash.report(new Exception("bugs in "+ ex.getMessage()));
+        }
+
+
+
+
+
+
+//Storage- upload images
+   imageView=(ImageView)findViewById(R.id.imageView);
+
+        FirebaseStorage storage=FirebaseStorage.getInstance();
+        // Create a storage reference from our app
+        StorageReference storageRef = storage.getReferenceFromUrl("gs://firbasedemo-6228f.appspot.com");
+
+// Create a reference to "mountains.jpg"
+        StorageReference mountainsRef = storageRef.child("images/mountains.jpg");
+
+        imageView.setDrawingCacheEnabled(true);
+        imageView.buildDrawingCache();
+       // Bitmap bitmap = imageView.getDrawingCache();
+        BitmapDrawable drawable=(BitmapDrawable)imageView.getDrawable();
+        Bitmap bitmap =drawable.getBitmap();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] data = baos.toByteArray();
+
+        UploadTask uploadTask = mountainsRef.putBytes(data);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                Uri downloadUrl = taskSnapshot.getDownloadUrl();
+            }
+        });

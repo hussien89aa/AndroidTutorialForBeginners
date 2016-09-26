@@ -1,0 +1,71 @@
+ 1-- menu layout
+ <?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/searchbar"
+        android:title="Search"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always"
+
+        ></item>
+    <item android:id="@+id/Home"
+        android:icon="@drawable/home"
+        android:title="Home"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/Add"
+        android:icon="@drawable/add"
+        android:title="Add"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/setting"
+        android:icon="@drawable/settings"
+        android:title="Setting"
+        app:showAsAction="ifRoom"/>
+
+
+</menu>
+
+2- menu code
+
+
+ @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.mainmenu, menu);
+
+        SearchView sv=(SearchView) menu.findItem(R.id.searchbar).getActionView();
+        SearchManager sm=(SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        sv.setSearchableInfo(sm.getSearchableInfo(getComponentName()));
+        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Toast.makeText(getApplicationContext(),query,Toast.LENGTH_LONG).show();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.Home:
+                Toast.makeText(this,"Home",Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.Add:
+                Toast.makeText(this,"Add",Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.setting:
+                Toast.makeText(this,"Seeting",Toast.LENGTH_LONG).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }

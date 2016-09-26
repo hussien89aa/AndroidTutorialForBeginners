@@ -1,0 +1,29 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+
+
+    android:id="@+id/mainform"
+    android:background="@color/whitebackground">
+
+    <LinearLayout
+        android:background="@color/whitebackground"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/leaivermod">
+
+
+        <ListView
+            android:background="@color/whitebackground"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/listView"
+            android:divider="@color/whitebackground"
+            android:dividerHeight="1dp"
+
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</RelativeLayout>

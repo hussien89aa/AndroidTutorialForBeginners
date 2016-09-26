@@ -1,0 +1,149 @@
+{
+ "query": {
+  "count": 1,
+  "created": "2016-09-10T00:59:13Z",
+  "lang": "en-us",
+  "results": {
+   "channel": {
+    "units": {
+     "distance": "mi",
+     "pressure": "in",
+     "speed": "mph",
+     "temperature": "F"
+    },
+    "title": "Yahoo! Weather - Rochester, NY, US",
+    "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2482949/",
+    "description": "Yahoo! Weather for Rochester, NY, US",
+    "language": "en-us",
+    "lastBuildDate": "Fri, 09 Sep 2016 08:59 PM EDT",
+    "ttl": "60",
+    "location": {
+     "city": "Rochester",
+     "country": "United States",
+     "region": " NY"
+    },
+    "wind": {
+     "chill": "75",
+     "direction": "315",
+     "speed": "7"
+    },
+    "atmosphere": {
+     "humidity": "53",
+     "pressure": "998.0",
+     "rising": "0",
+     "visibility": "16.1"
+    },
+    "astronomy": {
+     "sunrise": "6:44 am",
+     "sunset": "7:30 pm"
+    },
+    "image": {
+     "title": "Yahoo! Weather",
+     "width": "142",
+     "height": "18",
+     "link": "http://weather.yahoo.com",
+     "url": "http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif"
+    },
+    "item": {
+     "title": "Conditions for Rochester, NY, US at 08:00 PM EDT",
+     "lat": "43.186199",
+     "long": "-77.616402",
+     "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2482949/",
+     "pubDate": "Fri, 09 Sep 2016 08:00 PM EDT",
+     "condition": {
+      "code": "29",
+      "date": "Fri, 09 Sep 2016 08:00 PM EDT",
+      "temp": "76",
+      "text": "Partly Cloudy"
+     },
+     "forecast": [
+      {
+       "code": "47",
+       "date": "09 Sep 2016",
+       "day": "Fri",
+       "high": "81",
+       "low": "71",
+       "text": "Scattered Thunderstorms"
+      },
+      {
+       "code": "4",
+       "date": "10 Sep 2016",
+       "day": "Sat",
+       "high": "87",
+       "low": "66",
+       "text": "Thunderstorms"
+      },
+      {
+       "code": "4",
+       "date": "11 Sep 2016",
+       "day": "Sun",
+       "high": "73",
+       "low": "60",
+       "text": "Thunderstorms"
+      },
+      {
+       "code": "32",
+       "date": "12 Sep 2016",
+       "day": "Mon",
+       "high": "75",
+       "low": "55",
+       "text": "Sunny"
+      },
+      {
+       "code": "34",
+       "date": "13 Sep 2016",
+       "day": "Tue",
+       "high": "80",
+       "low": "60",
+       "text": "Mostly Sunny"
+      },
+      {
+       "code": "39",
+       "date": "14 Sep 2016",
+       "day": "Wed",
+       "high": "69",
+       "low": "60",
+       "text": "Scattered Showers"
+      },
+      {
+       "code": "30",
+       "date": "15 Sep 2016",
+       "day": "Thu",
+       "high": "67",
+       "low": "54",
+       "text": "Partly Cloudy"
+      },
+      {
+       "code": "30",
+       "date": "16 Sep 2016",
+       "day": "Fri",
+       "high": "72",
+       "low": "53",
+       "text": "Partly Cloudy"
+      },
+      {
+       "code": "28",
+       "date": "17 Sep 2016",
+       "day": "Sat",
+       "high": "76",
+       "low": "56",
+       "text": "Mostly Cloudy"
+      },
+      {
+       "code": "28",
+       "date": "18 Sep 2016",
+       "day": "Sun",
+       "high": "76",
+       "low": "61",
+       "text": "Mostly Cloudy"
+      }
+     ],
+     "description": "<![CDATA[<img src=\"http://l.yimg.com/a/i/us/we/52/29.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Partly Cloudy\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Fri - Scattered Thunderstorms. High: 81Low: 71\n<BR /> Sat - Thunderstorms. High: 87Low: 66\n<BR /> Sun - Thunderstorms. High: 73Low: 60\n<BR /> Mon - Sunny. High: 75Low: 55\n<BR /> Tue - Mostly Sunny. High: 80Low: 60\n<BR />\n<BR />\n<a href=\"http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2482949/\">Full Forecast at Yahoo! Weather</a>\n<BR />\n<BR />\n(provided by <a href=\"http://www.weather.com\" >The Weather Channel</a>)\n<BR />\n]]>",
+     "guid": {
+      "isPermaLink": "false"
+     }
+    }
+   }
+  }
+ }
+}

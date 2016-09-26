@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="phonelocation.example.asuss550c.phonelocation.MapDisplay">
+
+    <item android:id="@+id/error_sms"
+        android:title="Error"
+        android:icon="@drawable/ic_record_voice_over_white_24dp"
+        app:showAsAction="always" />
+    <item android:id="@+id/StreetView"
+        android:title="Street View"
+   android:icon="@drawable/ic_3d_rotation_white_24dp"
+     app:showAsAction="always" />
+
+    <item android:id="@+id/Findroute" android:title="Find route"
+        android:icon="@drawable/ic_directions_car_white_24dp"
+         app:showAsAction="always" />
+    <item android:id="@+id/refresh"
+        android:title="Refresh"
+        android:icon="@drawable/ic_cached_white_24dp"
+        app:showAsAction="always" />
+    <item android:id="@+id/goback" android:title="back"
+        android:icon="@drawable/left"
+        app:showAsAction="always" />
+
+</menu>

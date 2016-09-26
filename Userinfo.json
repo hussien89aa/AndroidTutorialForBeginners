@@ -1,0 +1,19 @@
+  {
+   "info":
+   {
+      "name":"Hussein",
+      "age":27
+   },
+   "jobs":[
+   {
+      "id":1,
+      "title":"Developer",
+      "desc":"Develop apps for user",
+   },
+    {
+      "id":2,
+      "title":"Tester",
+      "desc":"test apps",
+   }
+]
+}

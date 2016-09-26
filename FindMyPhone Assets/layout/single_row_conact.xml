@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/whitebackground"
+    android:layout_height="wrap_content"
+    android:paddingBottom="5dp">
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="2dp"
+        android:background="@drawable/backgroundwhite"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="2dp"
+        android:paddingLeft="2dp">
+
+        <ImageView
+            android:background="@color/white"
+            android:src="@drawable/gpson"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/imageView"
+            android:scaleType="fitXY"
+            android:layout_weight="0" />
+
+        <LinearLayout
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingLeft="5dp"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:background="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Find My phone"
+                android:id="@+id/textView1"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/imageView"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/blue"
+                android:layout_alignParentEnd="true"
+                android:paddingLeft="2dp"
+                android:textSize="18dp" />
+
+            <TextView
+                android:background="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Phone Number"
+                android:id="@+id/textView2"
+                android:layout_below="@+id/textView1"
+                android:layout_toRightOf="@+id/imageView"
+                android:textColor="@color/black"
+                android:layout_alignBottom="@+id/imageView"
+                android:paddingLeft="2dp"
+                android:layout_alignRight="@+id/textView1"
+                android:layout_alignEnd="@+id/textView1" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

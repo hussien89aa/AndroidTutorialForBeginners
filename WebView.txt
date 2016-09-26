@@ -1,0 +1,122 @@
+//layout
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.hussienalrubaye.androidpermission.MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text=""
+                android:hint="Enter URL"
+                android:ems="10"
+                android:id="@+id/etURL"
+                android:layout_weight="1" />
+
+            <Button
+                android:onClick="buGo"
+                android:text="Go"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button2"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:onClick="buBack"
+                android:text="Back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button4"
+                android:layout_weight="1" />
+
+            <Button
+                android:text="Forword"
+                android:onClick="buForword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button3"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <WebView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/wv1" />
+    </LinearLayout>
+</RelativeLayout>
+
+
+// java code
+public class MainActivity extends AppCompatActivity {
+//TextView tvDisplay;
+    EditText etURL;
+    WebView wv1;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+       // tvDisplay=(TextView)findViewById(R.id.tvDisplay);
+        wv1=(WebView)findViewById(R.id.wv1);
+        wv1.setWebViewClient(new myWebView());
+        wv1.getSettings().setJavaScriptEnabled(true);
+        wv1.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        etURL=(EditText)findViewById(R.id.etURL);
+        wv1.loadUrl("http://alruabye.net");
+
+
+    }
+
+
+    public void buGo(View view) {
+
+        LoadURL(etURL.getText().toString());
+    }
+
+ 
+    void LoadURL(String url){
+        this.url=url;
+        wv1.loadUrl(url);
+    }
+
+    public void buBack(View view) {
+        wv1.goBack();
+    }
+
+    public void buForword(View view) {
+        wv1.goForward();
+    }
+
+    private class myWebView extends WebViewClient{
+
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request){
+            return true;
+        }
+
+    }
+}
+
+//acces to internet
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+

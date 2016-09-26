@@ -1,0 +1,4 @@
+name=hussien
+age=27
+Langauges=Android, iOS,C#,Java
+jobs=NYC ,developer| CA,tester| FL, manager

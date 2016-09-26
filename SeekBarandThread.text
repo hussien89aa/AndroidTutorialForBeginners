@@ -1,0 +1,106 @@
+//layout
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.hussienalrubaye.androidpermission.MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sb1"
+             />
+
+        <TextView
+            android:text="counter=1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvCounter"
+            android:textSize="42sp" />
+
+        <Button
+            android:text="Start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button6"
+            android:onClick="bustart" />
+
+        <Button
+            android:text="Stop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button5"
+            android:onClick="buStop" />
+
+    </LinearLayout>
+</RelativeLayout>
+
+
+
+//code
+ SeekBar sb1;
+    int MaxCounter=100;
+    TextView tvCounter;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        sb1=(SeekBar)findViewById(R.id.sb1);
+        tvCounter=(TextView)findViewById(R.id.tvCounter) ;
+        sb1.setMax(MaxCounter);
+    }
+    boolean IsRunning=false;
+    int CounterUp=0;
+
+    public void bustart(View view) {
+        IsRunning=true;
+
+        myThread t=new myThread();
+        t.start();
+    }
+
+    public void buStop(View view) {
+
+        IsRunning=false;
+    }
+
+    class  myThread extends Thread{
+
+
+        @Override
+        public void run() {
+           while (IsRunning){
+
+               if (CounterUp<MaxCounter){
+ // call ui
+
+                   runOnUiThread(new Runnable() {
+                       @Override
+                       public void run() {
+                           sb1.setProgress(CounterUp);
+                           tvCounter.setText("Couunter "+ CounterUp);
+                       }
+                   });
+
+                   CounterUp=CounterUp+1;
+
+                   try {
+                       Thread.sleep(1000);
+                   } catch (InterruptedException e) {
+                       e.printStackTrace();
+                   }
+               }
+
+
+           }
+
+        }
+    }

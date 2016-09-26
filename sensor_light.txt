@@ -1,0 +1,59 @@
+// permission
+<uses-feature android:name="android.hardware.sensor.accelerometer"  android:required="true" />
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+   
+   
+
+//code
+public class MainActivity extends AppCompatActivity implements SensorEventListener  {
+
+    Sensor sensor;
+    SensorManager sensorManager;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        sensorManager=(SensorManager)getSystemService(Context.SENSOR_SERVICE);
+        sensor=sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+
+    }
+
+    @Override
+    public  void onResume(){
+        super.onResume();
+        sensorManager.registerListener(this,sensor,SensorManager.SENSOR_DELAY_NORMAL);
+
+    }
+    @Override
+    public  void onPause(){
+        super.onPause();
+        sensorManager.unregisterListener(this);
+    }
+
+ MediaPlayer mp;
+    boolean isrunning=false;
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+
+if (event.values[0]>40 && isrunning==false){
+    isrunning=true;
+    mp=new MediaPlayer();
+    try {
+        mp.setDataSource("http://server6.mp3quran.net/thubti/001.mp3");
+        mp.prepare();
+        mp.start();
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+}

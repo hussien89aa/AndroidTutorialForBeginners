@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">localization</string>
+    <string name="buhome">Home</string>
+    <string name="mgs">Welcome</string>
+    <string name="description" >
+       Android is open source system which is used in wide range of handheld devices around the world. Android Apps different from PC apps in dealing with user privacy informations. Because Android be in touch with most of user’s private information such as Photos, Videos, Voice Recording, and user’s location. Even Though Android provide model for User’s permissions that allows to end user to give or deny any permissions required by any apps. So if the app ask to access to user’s location and the user deny the request the app cannot use this permission. However there are many security leaks in android Apps in play store. This leaks could be used to steal user’s private information by using third party apps such as Ads library or Malicious apps. When we used these Third-party library, we add it in our Android App, it will be as part of our Apps. That is mean this libraries will have access to same permissions that our app could access to. If the user allows to our app to access to his location, the Third-party Library could access to his location also. Because Third-party Library could use all permission that granted the parent app. Because these Third-party library being part from the app, and could use all permissions that app have it. So we have to protect user privacy, and we have to make sure these library are not using user’s private information for advertisement. We build tool that help Android developers to keep the privacy information of their apps’ users more secure. By test Third-party libraries permissions in deep code to find the dangerous permissions that used by the Third-party library which could use developer app permissions to access to user privacy information.
+
+        </string>
+
+    <string-array name="myarray">
+        <item>name</item>
+        <item>name</item>
+        <item>name</item>
+    </string-array>
+</resources>

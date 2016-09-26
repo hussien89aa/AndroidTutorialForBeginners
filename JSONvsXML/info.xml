@@ -1,0 +1,29 @@
+<info> 
+<name> hussien </name>
+<age> 27</age>
+<Langauges>
+<item> Android</item>
+<item> iOS</item>
+<item>C# </item>
+<item>Java </item>
+ </Langauges>
+
+ <jobs>
+<item>
+<title>developer </title>
+<place> NYC</place>
+</item>
+
+<item>
+<title>tester </title>
+<place> CA</place>
+</item>
+
+<item>
+<title>manager </title>
+<place> FL</place>
+</item>
+  </jobs>
+
+
+</info>
