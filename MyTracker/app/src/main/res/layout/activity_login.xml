@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.alrubaye.mytracker.Login">
+    <LinearLayout
+        android:paddingTop="3pt"
+        android:background="@color/whitebackground"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+
+        <LinearLayout
+            android:padding="10dp"
+            android:background="@color/whitebackground"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/LLogin"
+            android:paddingTop="5dp"
+            >
+
+
+            <LinearLayout
+                android:background="@drawable/backgroundwhite"
+                android:padding="15pt"
+
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:touchscreenBlocksFocus="false"
+                android:layout_marginBottom="3dp">
+
+                <TextView
+                    android:background="@drawable/backgroundwhite"
+                    android:text="phone number input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView3"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:maxLength="15"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:id="@+id/EDTNumber"
+                    android:layout_weight="1"
+                    android:textColor="#ff1a102c"
+                    android:background="@android:drawable/editbox_background"
+                    android:textSize="20dp"
+                    android:hint="enter number"
+                    android:paddingBottom="9dp"
+                    android:paddingTop="9dp"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="phone" >
+
+                </EditText>
+
+                <Button
+
+                    android:layout_margin="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="25pt"
+                    android:text="Next"
+                    android:id="@+id/buNext"
+                    android:background="@drawable/green_button"
+                    android:onClick="BuNext"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="#ff06071c"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10dp" />
+
+                <ProgressBar
+                    android:background="@drawable/backgroundwhite"
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/progressBar1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

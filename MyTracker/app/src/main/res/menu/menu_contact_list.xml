@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="phonelocation.example.asuss550c.phonelocation.ContactList">
+     <item android:id="@+id/add"
+         android:title="Save"
+         android:icon="@drawable/ic_add_white_24dp"
+         app:showAsAction="always" />
+     <item android:id="@+id/goback"
+         android:title="Save"
+        android:icon="@drawable/ic_done_white_24dp"
+        app:showAsAction="always" />
+</menu>
