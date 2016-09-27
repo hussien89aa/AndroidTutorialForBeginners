@@ -26,7 +26,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.google.firebase:firebase-core:9.6.1'
-    compile 'com.google.android.gms:play-services:9.6.1'
+    compile 'com.google.android.gms:play-services-maps:9.6.1'
     compile 'com.google.firebase:firebase-database:9.6.1'
     testCompile 'junit:junit:4.12'
 }

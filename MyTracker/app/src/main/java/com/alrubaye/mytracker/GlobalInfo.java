@@ -42,7 +42,6 @@ public class GlobalInfo {
         }
     }
 
-
     Context context;
     SharedPreferences ShredRef;
     public  GlobalInfo(Context context){
@@ -56,7 +55,7 @@ public class GlobalInfo {
             if (MyTrackersList.length()==0)
                 MyTrackersList=m.getKey() + "%" + m.getValue();
             else
-                MyTrackersList+=  m.getKey() + "%" + m.getValue();
+                MyTrackersList+=  "%"+m.getKey() + "%" + m.getValue();
 
         }
 
@@ -72,7 +71,7 @@ public class GlobalInfo {
 
     void LoadData(){
         MyTrackers.clear();
-          PhoneNumber= ShredRef.getString("PhoneNumber","empty");
+        PhoneNumber= ShredRef.getString("PhoneNumber","empty");
         String MyTrackersList= ShredRef.getString("MyTrackers","empty");
         if (!MyTrackersList.equals("empty")){
             String[] users=MyTrackersList.split("%");
@@ -90,5 +89,6 @@ public class GlobalInfo {
         }
 
     }
+
 
 }

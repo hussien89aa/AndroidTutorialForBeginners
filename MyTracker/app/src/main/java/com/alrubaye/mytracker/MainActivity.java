@@ -18,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -49,8 +50,24 @@ public class MainActivity extends AppCompatActivity {
 
         myadapter=new  MyCustomAdapter(listnewsData);
         ListView lsNews=(ListView)findViewById(R.id.listView);
+        lsNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AdapterItems adapterItems=listnewsData.get(position);
+                GlobalInfo.UpdatesInfo(adapterItems.PhoneNumber);
+                Intent intent= new Intent(getApplicationContext(),MapsActivity.class);
+                intent.putExtra("PhoneNumber",adapterItems.PhoneNumber);
+                startActivity(intent);
+            }
+        });
         lsNews.setAdapter(myadapter);//intisal with data
-      //  Refesh();
+
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        Refesh();
     }
 
     void Refesh(){

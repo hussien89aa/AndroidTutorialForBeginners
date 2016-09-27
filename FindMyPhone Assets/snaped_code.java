@@ -147,7 +147,7 @@ void PickContact(){
             if (MyTrackersList.length()==0)
                 MyTrackersList=m.getKey() + "%" + m.getValue();
             else
-                MyTrackersList+=  m.getKey() + "%" + m.getValue();
+                MyTrackersList =MyTrackersList+ "%" + m.getKey() + "%" + m.getValue();
 
         }
 
