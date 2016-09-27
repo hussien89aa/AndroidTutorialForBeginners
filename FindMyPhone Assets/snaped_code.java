@@ -133,6 +133,53 @@ void PickContact(){
                 // Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
+//Global file
+                 Context context;
+    SharedPreferences ShredRef;
+    public  GlobalInfo(Context context){
+        this.context=context;
+        ShredRef=context.getSharedPreferences("myRef",Context.MODE_PRIVATE);
+    }
 
+    void SaveData(){
+        String MyTrackersList="" ;
+        for (Map.Entry  m:GlobalInfo.MyTrackers.entrySet()){
+            if (MyTrackersList.length()==0)
+                MyTrackersList=m.getKey() + "%" + m.getValue();
+            else
+                MyTrackersList+=  m.getKey() + "%" + m.getValue();
+
+        }
+
+        if (MyTrackersList.length()==0)
+            MyTrackersList="empty";
+
+
+        SharedPreferences.Editor editor=ShredRef.edit();
+        editor.putString("MyTrackers",MyTrackersList);
+        editor.putString("PhoneNumber",PhoneNumber);
+        editor.commit();
+    }
+
+    void LoadData(){
+        MyTrackers.clear();
+          PhoneNumber= ShredRef.getString("PhoneNumber","empty");
+        String MyTrackersList= ShredRef.getString("MyTrackers","empty");
+        if (!MyTrackersList.equals("empty")){
+            String[] users=MyTrackersList.split("%");
+            for (int i=0;i<users.length;i=i+2){
+                MyTrackers.put(users[i],users[i+1]);
+            }
+        }
+
+
+        if (PhoneNumber.equals("empty")){
+
+            Intent intent=new Intent(context, Login.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        }
+
+    }
 
 

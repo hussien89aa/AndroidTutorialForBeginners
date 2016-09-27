@@ -50,12 +50,67 @@ public class MainActivity extends AppCompatActivity {
         myadapter=new  MyCustomAdapter(listnewsData);
         ListView lsNews=(ListView)findViewById(R.id.listView);
         lsNews.setAdapter(myadapter);//intisal with data
-        Refesh();
+      //  Refesh();
     }
 
     void Refesh(){
         listnewsData.clear();
-      
+        databaseReference.child("Users").child(GlobalInfo.PhoneNumber).
+                child("Finders").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Map<String, Object> td = (HashMap<String, Object>) dataSnapshot.getValue();
+
+                listnewsData.clear();
+                if (td == null)  //no one allow you to find him
+                {
+                    listnewsData.add(new AdapterItems("NoTicket", "no_desc"));
+                    myadapter.notifyDataSetChanged();
+                    return;
+                }
+                // List<Object> values = td.values();
+
+
+                // get all contact to list
+                ArrayList<AdapterItems> list_contact = new ArrayList<AdapterItems>();
+                Cursor cursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null);
+                while (cursor.moveToNext()) {
+                    String name = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+
+                    String phoneNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                    list_contact.add(new AdapterItems(  name,GlobalInfo.FormatPhoneNumber(phoneNumber)
+                    ));
+
+
+                }
+
+
+// if the name is save chane his text
+                // case who find me
+                String tinfo;
+                for (  String Numbers : td.keySet()) {
+                    for (AdapterItems cs : list_contact) {
+
+                        //IsFound = SettingSaved.WhoIFindIN.get(cs.Detals);  // for case who i could find list
+                        if (cs.PhoneNumber.length() > 0)
+                            if (Numbers.contains(cs.PhoneNumber)) {
+                                listnewsData.add(new AdapterItems(cs.UserName, cs.PhoneNumber));
+                                break;
+                            }
+
+                    }
+
+                }
+                myadapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                // Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
 
 
 
@@ -165,19 +220,25 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent)
-        {
+        public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater mInflater = getLayoutInflater();
-            View myView = mInflater.inflate(R.layout.single_row_conact, null);
 
-            final   AdapterItems s = listnewsDataAdpater.get(position);
+            final AdapterItems s = listnewsDataAdpater.get(position);
+            if (s.UserName.equals("NoTicket")) {
+                View myView = mInflater.inflate(R.layout.news_ticket_no_news, null);
 
-            TextView tv_user_name=( TextView)myView.findViewById(R.id.tv_user_name);
-            tv_user_name.setText(s.UserName);
-            TextView tv_phone=( TextView)myView.findViewById(R.id.tv_phone);
-            tv_phone.setText(s.PhoneNumber);
+                return myView;
 
-            return myView;
+            } else {
+                View myView = mInflater.inflate(R.layout.single_row_conact, null);
+
+                TextView tv_user_name = (TextView) myView.findViewById(R.id.tv_user_name);
+                tv_user_name.setText(s.UserName);
+                TextView tv_phone = (TextView) myView.findViewById(R.id.tv_phone);
+                tv_phone.setText(s.PhoneNumber);
+
+                return myView;
+            }
         }
 
     }
