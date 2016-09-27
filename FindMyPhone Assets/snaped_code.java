@@ -76,32 +76,33 @@ void PickContact(){
 
  //**************************************************************
 
-list my tracking
-   mDatabase.child("FindMyPhoneUsers").child(SettingSaved.PhoneNumber).child("Finders").addValueEventListener(new ValueEventListener() {
+//list my tracking
+   databaseReference.child("Users").child(GlobalInfo.PhoneNumber).
+                child("Finders").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Map<String, Object> td = (HashMap<String, Object>) dataSnapshot.getValue();
 
-                list.clear();
+                listnewsData.clear();
                 if (td == null)  //no one allow you to find him
                 {
-                    list.add(new ListItem("NoTicket", "no_desc", R.drawable.dmap));
-                    listv.setAdapter(new UserListAdapter(list));
-
+                    listnewsData.add(new AdapterItems("NoTicket", "no_desc"));
+                     myadapter.notifyDataSetChanged();
                     return;
                 }
                 // List<Object> values = td.values();
 
 
                 // get all contact to list
-                ArrayList<ListItem> list_contact = new ArrayList<ListItem>();
+                ArrayList<AdapterItems> list_contact = new ArrayList<AdapterItems>();
                 Cursor cursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null);
                 while (cursor.moveToNext()) {
                     String name = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
 
                     String phoneNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                    list_contact.add(new ListItem(name, ManagmentOperations.FormatPhoneNumber(phoneNumber), R.drawable.cover));
+                    list_contact.add(new AdapterItems(  name,GlobalInfo.FormatPhoneNumber(phoneNumber)
+                           ));
 
 
                 }
@@ -111,27 +112,19 @@ list my tracking
                 // case who find me
                 String tinfo;
                 for (  String Numbers : td.keySet()) {
-                    for (ListItem cs : list_contact) {
+                    for (AdapterItems cs : list_contact) {
 
                         //IsFound = SettingSaved.WhoIFindIN.get(cs.Detals);  // for case who i could find list
                         if (cs.PhoneNumber.length() > 0)
                             if (Numbers.contains(cs.PhoneNumber)) {
-                                list.add(new ListItem(cs.UserName, cs.PhoneNumber, R.drawable.dmap));
+                                listnewsData.add(new AdapterItems(cs.UserName, cs.PhoneNumber));
                                 break;
                             }
 
                     }
 
                 }
-                // add new one
-                // list.add(new ListItem("Loading", "no_desc", R.drawable.dmap));
-              
-                //ask for add users to track you
-             // if (list.size()==0  && IsDisplayMessage==false) {
-                  //  IsDisplayMessage=true;
-                  // ShowNoUsers();
-
-               // }
+                myadapter.notifyDataSetChanged();
             }
 
             @Override
@@ -140,5 +133,6 @@ list my tracking
                 // Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
+
 
 

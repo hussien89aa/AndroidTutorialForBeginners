@@ -7,8 +7,8 @@
        android:title="help"
         android:icon="@drawable/ic_local_hospital_white_24dp"
         app:showAsAction="always" />
-   <item android:id="@+id/setting"
-       android:title="Setting"
+   <item android:id="@+id/addtracker"
+       android:title="addtracker"
        android:icon="@drawable/ic_perm_identity_white_24dp"
        app:showAsAction="always" />
 </menu>

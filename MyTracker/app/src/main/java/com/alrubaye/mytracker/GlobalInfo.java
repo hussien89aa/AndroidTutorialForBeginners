@@ -72,8 +72,8 @@ public class GlobalInfo {
 
     void LoadData(){
         MyTrackers.clear();
-        String PhoneNumber= ShredRef.getString("PhoneNumber","empty");
-        String MyTrackersList= ShredRef.getString("MyTrackersList","empty");
+         PhoneNumber= ShredRef.getString("PhoneNumber","empty");
+        String MyTrackersList= ShredRef.getString("MyTrackers","empty");
         if (!MyTrackersList.equals("empty")){
             String[] users=MyTrackersList.split("%");
             for (int i=0;i<users.length;i=i+2){
