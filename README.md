@@ -1,4 +1,4 @@
-## snapped code for android Tutorial For Beginners PlayList in YouTube, check the videos Tutorial  [here](https://www.youtube.com/playlist?list=PLwHPEx7pNq8lcIEa9nqpiqOTmFL0L-PM6)
+## snapped code for android Tutorial For Beginners PlayList in YouTube, check the videos Tutorial  [here](https://www.udemy.com/android-tutorial-for-beginners/?instructorPreviewMode=guest)
 
 
 
