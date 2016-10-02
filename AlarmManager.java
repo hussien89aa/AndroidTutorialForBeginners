@@ -12,7 +12,11 @@ intent.putExtra("MyMessage","HERE I AM PASSING THEPERTICULAR
         	MESSAGE WHICH SHOULD BE SHOW ON RECEIVER OF ALARM"); 
 PendingIntent pendingIntent = PendingIntent.getBroadcast(  
                                       this.getApplicationContext(),
-                                       234324243, intent, 0);   
+                                       234324243, intent, 0);
+//start service
+  // PendingIntent pendingIntent = PendingIntent.getService(  
+                                      this.getApplicationContext(),
+                                       0, intent, 0);                                       
 alarmManager.set(AlarmManager.RTC_WAKEUP,
  myAlarmDate.getTimeInMillis(),_myPendingIntent); 
 /*  Create Repeating Alarm Start After Each 2 Minutes
