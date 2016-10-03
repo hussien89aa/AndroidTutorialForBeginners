@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.provider.ContactsContract;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -25,24 +26,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     DatabaseReference databaseReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        databaseReference= FirebaseDatabase.getInstance().getReference();
         Bundle b=getIntent().getExtras();
+        databaseReference= FirebaseDatabase.getInstance().getReference();
         LoadLocation(b.getString("PhoneNumber"));
 
     }
 
     void  LoadLocation(String PhoneNumber){
+
         databaseReference.child("Users").child(PhoneNumber).
                 child("Location").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Map<String, Object> td = (HashMap<String, Object>) dataSnapshot.getValue();
-
+                if (td==null)return;
                 double lat = Double.parseDouble(td.get("lat").toString());
                 double lag = Double.parseDouble(td.get("lag").toString());
                 /** Make sure that the map has been initialised **/
@@ -89,4 +92,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(sydney).title("last online:"+ LastDateOnline));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,15));
     }
+
+
+
+
+
 }
