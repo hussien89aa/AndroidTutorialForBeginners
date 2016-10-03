@@ -175,14 +175,9 @@ public class MainActivity extends AppCompatActivity {
     void StartServices(){
 
         //start location track
-        if (!TrackLocation.isRunning){
-            TrackLocation trackLocation = new TrackLocation();
-            LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, trackLocation);
-        }
         if (!MyServie.IsRunning){
-            Intent intent=new Intent(this,MyServie.class);
+            Intent intent=new Intent(getBaseContext(),MyServie.class);
             startService(intent);
         }
 
