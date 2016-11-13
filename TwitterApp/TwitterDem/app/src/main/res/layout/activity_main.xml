@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.alrubaye.twitterdem.MainActivity">
+
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layoutDirection="ltr"
+        android:gravity="center"
+        android:background="@color/whiteback"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:id="@+id/ChannelInfo"
+            android:layoutDirection="rtl"
+            android:background="@color/whitebackground"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0">
+            <LinearLayout
+                android:layout_marginBottom="2dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:paddingBottom="4dp"
+                android:gravity="center"
+                android:background="@color/customeblue"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="4dp"
+                android:paddingRight="5dp"
+                android:paddingLeft="6dp">
+
+                <ImageView
+                    android:layout_width="80px"
+                    android:layout_height="80px"
+android:src="@drawable/ic_account_circle_black_24dp"
+                    android:id="@+id/iv_channel_icon"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignBottom="@+id/txtflollower"
+                    android:layout_weight="0" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginRight="5dp"
+                    android:paddingTop="1dp">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="User name"
+
+                        android:id="@+id/txtnamefollowers"
+                        android:layout_alignParentTop="true"
+                        android:gravity="right"
+                        android:textAlignment="gravity"
+                        android:background="@color/customeblue"
+                        android:layout_toLeftOf="@+id/webView2"
+                        android:layout_toRightOf="@+id/bulogin"
+                        android:layout_toEndOf="@+id/bulogin"
+                        android:paddingBottom="1dp"
+                        android:textSize="14dp"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="subscribers"
+                        android:id="@+id/txtflollower"
+                        android:layout_below="@+id/txtnamefollowers"
+                        android:gravity="right"
+                        android:textAlignment="gravity"
+                        android:layout_alignRight="@+id/txtnamefollowers"
+                        android:layout_alignEnd="@+id/txtnamefollowers"
+                        android:layout_alignBottom="@+id/bulogin"
+                        android:layout_toRightOf="@+id/bulogin"
+                        android:layout_toEndOf="@+id/bulogin"
+                        android:background="@color/customeblue"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="8dp"
+                        android:paddingBottom="5dp"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Follow"
+                    android:id="@+id/buFollow"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:background="@drawable/barcolor"
+                    android:drawableRight="@drawable/add"
+                    android:paddingRight="5dp"
+                    android:textSize="10dp"
+                    android:textColor="#fdfffa"
+                    android:onClick="buFollowers"
+                    android:layout_weight="0" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:background="@color/whitebackground"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ListView
+
+                android:background="@color/whitebackground"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/LVNews"
+                android:descendantFocusability="beforeDescendants"
+                android:divider="@color/whitebackground"
+                android:dividerHeight="9dp"
+                android:layout_weight="1" />
+
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

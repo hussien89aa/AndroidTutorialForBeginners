@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:background="@color/whitebackground"
+    android:layoutDirection="rtl"
+    android:textAlignment="center"
+
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layoutDirection="rtl"
+        android:textAlignment="center"
+    android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:paddingRight="5dp"
+        android:background="@drawable/background"
+        android:paddingTop="2dp"
+        android:paddingBottom="1dp"
+
+       >
+
+        <LinearLayout
+             android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:layoutDirection="ltr"
+            android:textAlignment="center"
+
+            android:background="@drawable/background"
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
+
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp">
+
+                <TextView
+                    android:paddingEnd="1dp"
+                    android:layout_weight="0"
+                    android:background="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="2015-12-11"
+                    android:textSize="10dp"
+
+                    android:id="@+id/txt_tweet_date" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="User name"
+                android:id="@+id/txtUserName"
+                android:layout_alignParentTop="true"
+                android:gravity="right"
+                android:background="@color/white"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:layout_toLeftOf="@+id/webView"
+                android:layout_toRightOf="@+id/bulogin"
+                android:layout_toEndOf="@+id/bulogin"
+                android:layout_weight="1"
+                android:textColor="#0894f8"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                 android:paddingRight="3dp" />
+
+
+
+            <ImageView
+                android:layout_width="50px"
+                android:layout_height="50px"
+    android:src="@drawable/ic_account_circle_black_24dp"
+                android:id="@+id/picture_path"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignBottom="@+id/txtflollower"
+                android:layout_weight="0"
+
+
+                android:background="@color/lowDarkfont" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:fontFamily="sans-serif-medium"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+           android:paddingRight="5dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Love new twitter feathers, looking forword for new addation feather"
+            android:id="@+id/txt_tweet"
+            android:layout_alignParentTop="true"
+            android:gravity="left"
+            android:textAlignment="gravity"
+
+            android:background="@color/white"
+            android:layout_toLeftOf="@+id/webView"
+            android:layout_toRightOf="@+id/bulogin"
+            android:layout_toEndOf="@+id/bulogin"
+            android:paddingBottom="2dp"
+            android:textSize="18dp"
+            android:textColor="#040101" />
+
+        <ImageView
+            android:background="@drawable/background"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:layout_width="fill_parent"
+            android:src="@drawable/twitter"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:id="@+id/tweet_picture"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@+id/txtflollower"
+            android:layout_weight="0"
+            android:layout_marginBottom="1dp"
+            android:layout_height="100pt" />
+
+        <LinearLayout
+
+            android:paddingLeft="10dp"
+            android:paddingRight="3dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="5dp"
+            android:layoutDirection="ltr"
+            android:orientation="horizontal"
+            android:background="@drawable/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/iv_share"
+               android:layout_marginRight="8dp"
+                android:background="@drawable/ic_favorite_border_black_24dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

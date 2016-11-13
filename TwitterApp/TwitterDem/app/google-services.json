@@ -1,0 +1,125 @@
+{
+  "project_info": {
+    "project_number": "21845150751",
+    "firebase_url": "https://firbasedemo-6228f.firebaseio.com",
+    "project_id": "firbasedemo-6228f",
+    "storage_bucket": "firbasedemo-6228f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21845150751:android:8592e90db472ebb7",
+        "android_client_info": {
+          "package_name": "com.hussienalrubaye.androidfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21845150751-tiq6jqsk2ndfvlvgtnlc659jsakg5csn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hussienalrubaye.androidfirebase",
+            "certificate_hash": "76A07B52241638F10FB6D3CF8F6B855F929169DC"
+          }
+        },
+        {
+          "client_id": "21845150751-m2e88crhtgshikohp6jmeln4o4ut014k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrmRClRWJF_SsRTnHUCufUo6808FJFa7I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21845150751-m2e88crhtgshikohp6jmeln4o4ut014k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21845150751:android:679da90dbe15c5b2",
+        "android_client_info": {
+          "package_name": "com.alrubye.firstapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21845150751-5tk4fg7c1k9l81ll5q8lihmtnp1olt0c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alrubye.firstapp",
+            "certificate_hash": "76A07B52241638F10FB6D3CF8F6B855F929169DC"
+          }
+        },
+        {
+          "client_id": "21845150751-m2e88crhtgshikohp6jmeln4o4ut014k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrmRClRWJF_SsRTnHUCufUo6808FJFa7I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21845150751:android:3162a499db69de48",
+        "android_client_info": {
+          "package_name": "com.alrubaye.twitterdem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21845150751-m2e88crhtgshikohp6jmeln4o4ut014k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrmRClRWJF_SsRTnHUCufUo6808FJFa7I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
