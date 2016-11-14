@@ -1,5 +1,5 @@
-##Tweeter AAP.
-###This app is socail media app that allows people to share thier photo's,status, and  follow other people.
+##Twitter AAP.
+###This app is social media app that allows people to share their photos,status, and follow other people..
 ####The complete tutorial how to build it is on [UDEMY Android 7](https://www.udemy.com/android-tutorial-for-beginners/?instructorPreviewMode=guest)
 
 
