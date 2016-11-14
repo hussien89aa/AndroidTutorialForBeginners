@@ -26,6 +26,7 @@
             android:id="@+id/etName" />
 
         <EditText
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -34,6 +35,7 @@
             android:hint="enter email" />
 
         <EditText
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -45,9 +47,7 @@
             android:background="@drawable/background"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            android:layout_width="fill_parent"
-            android:layout_height="290.50px"
-            android:src="@drawable/twitter"
+            android:src="@drawable/persoicon"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:id="@+id/ivUserImage"
@@ -56,17 +56,19 @@
             android:layout_alignParentEnd="true"
             android:layout_alignBottom="@+id/txtflollower"
             android:layout_weight="0"
-            android:layout_marginBottom="1dp" />
+            android:layout_marginBottom="1dp"
+            android:layout_height="100pt"
+            android:layout_width="80pt" />
         <Button
-            android:layout_width="195px"
-            android:layout_height="60dp"
             android:text="Login"
             android:id="@+id/bulogin"
              android:background="@drawable/barcolor"
              android:paddingRight="5dp"
             android:textSize="10dp"
             android:textColor="#fdfffa"
-            android:onClick="buLogin" />
+            android:onClick="buLogin"
+            android:layout_height="wrap_content"
+            android:layout_width="50pt" />
 
     </LinearLayout>
 </RelativeLayout>

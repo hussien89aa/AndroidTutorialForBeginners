@@ -10,9 +10,6 @@ import android.content.SharedPreferences;
 
 public class SaveSettings {
     public  static String UserID="";
-    //https://firebasestorage.googleapis.com/v0/b/firbasedemo-6228f.appspot.com/o/images%2F32_131116124812.jpg?alt=media&token=0287e868-557b-431c-bccc-7245d5fe8fc6
-    public  static String ServerImages="";
-
 
     Context context;
     SharedPreferences ShredRef;
@@ -25,7 +22,9 @@ public class SaveSettings {
 
         SharedPreferences.Editor editor=ShredRef.edit();
         editor.putString("UserID",UserID);
+
          editor.commit();
+        LoadData();
     }
 
     void LoadData(){

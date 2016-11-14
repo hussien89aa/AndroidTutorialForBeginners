@@ -51,8 +51,6 @@ EditText etName;
     EditText etEmail;
     EditText etPassword;
     ImageView ivUserImage;
-    int RESULT_LOAD_IMAGE=111; //any number for tag
-    //1- define
     private static final String TAG = "AnonymousAuth";
 
     // [START declare_auth]
@@ -73,12 +71,11 @@ EditText etName;
             @Override
             public void onClick(View view) {
 
-                CheckUserPermsions();
+               CheckUserPermsions();
             }
         });
 
-        //2- initiailze OnCreate()
-        // [START initialize_auth]
+
         mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
 
@@ -98,36 +95,17 @@ EditText etName;
             }
         };
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
-            Uri selectedImage = data.getData();
-            String[] filePathColumn = {MediaStore.Images.Media.DATA};
-
-            Cursor cursor = getContentResolver().query(selectedImage,
-                    filePathColumn, null, null, null);
-            cursor.moveToFirst();
-
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
-            cursor.close();
-            ivUserImage.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-
-        }
-    }
 
     public void buLogin(View view) {
         showProgressDialog();
         FirebaseStorage storage=FirebaseStorage.getInstance();
         // Create a storage reference from our app
-        StorageReference storageRef = storage.getReferenceFromUrl("gs://firbasedemo-6228f.appspot.com");
+        StorageReference storageRef = storage.getReferenceFromUrl("gs://twitter-app-f69e8.appspot.com");
         DateFormat df = new SimpleDateFormat("ddMMyyHHmmss");
         Date dateobj = new Date();
-       // System.out.println(df.format(dateobj));
+        // System.out.println(df.format(dateobj));
 // Create a reference to "mountains.jpg"
-       final String ImagePath= df.format(dateobj) +".jpg";
+        final String ImagePath= df.format(dateobj) +".jpg";
         StorageReference mountainsRef = storageRef.child("images/"+ ImagePath);
         ivUserImage.setDrawingCacheEnabled(true);
         ivUserImage.buildDrawingCache();
@@ -157,89 +135,16 @@ EditText etName;
                 } catch (UnsupportedEncodingException e) {
 
                 }
+                //TODO:  login and register
                 String url="http://10.0.2.2/~hussienalrubaye/twitterserver/register.php?first_name="+name+"&email="+etEmail.getText().toString()+"&password="+etPassword.getText().toString()+"&picture_path="+ downloadUrl;
 
                 new MyAsyncTaskgetNews().execute(url);
+                //hideProgressDialog();
 
             }
         });
     }
 
-    // get news from server
-    public class MyAsyncTaskgetNews extends AsyncTask<String, String, String> {
-        @Override
-        protected void onPreExecute() {
-            //before works
-        }
-        @Override
-        protected String  doInBackground(String... params) {
-            // TODO Auto-generated method stub
-            try {
-                String NewsData;
-                //define the url we have to connect with
-                URL url = new URL(params[0]);
-                //make connect with url and send request
-                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                //waiting for 7000ms for response
-                urlConnection.setConnectTimeout(7000);//set timeout to 5 seconds
-
-                try {
-                    //getting the response data
-                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                    //convert the stream to string
-                    Operations operations=new Operations(getApplicationContext());
-                    NewsData = operations.ConvertInputToStringNoChange(in);
-                    //send to display data
-                    publishProgress(NewsData);
-                } finally {
-                    //end connection
-                    urlConnection.disconnect();
-                }
-
-            }catch (Exception ex){}
-            return null;
-        }
-        protected void onProgressUpdate(String... progress) {
-
-            try {
-               JSONObject json= new JSONObject(progress[0]);
-                //display response data
-                if (json.getString("msg")==null)
-                    return;
-                if (json.getString("msg").equalsIgnoreCase("user is added")) {
-                    Toast.makeText(getApplicationContext(), json.getString("msg"), Toast.LENGTH_LONG).show();
-//login
-                    String url="http://10.0.2.2/~hussienalrubaye/twitterserver/login.php?email="+etEmail.getText().toString()+"&password="+etPassword.getText().toString() ;
-
-                    new MyAsyncTaskgetNews().execute(url);
-                }
-
-                if (json.getString("msg").equalsIgnoreCase("Pass Login")) {
-                    JSONArray UserInfo=new JSONArray( json.getString("info"));
-                    JSONObject UserCreintal= UserInfo.getJSONObject(0);
-                    //Toast.makeText(getApplicationContext(),UserCreintal.getString("user_id"),Toast.LENGTH_LONG).show();
-                    hideProgressDialog();
-                    SaveSettings saveSettings= new SaveSettings(getApplicationContext());
-                    saveSettings.SaveData(UserCreintal.getString("user_id"));
-                    finish(); //close this activity
-                }
-
-            } catch (Exception ex) {
-                Log.d("er",  ex.getMessage());
-            }
-
-
-        }
-
-        protected void onPostExecute(String  result2){
-
-
-        }
-
-
-
-
-    }
 
     // [START on_start_add_listener]
     @Override
@@ -260,7 +165,7 @@ EditText etName;
         hideProgressDialog();
     }
     private void signInAnonymously() {
-         // [START signin_anonymously]
+        // [START signin_anonymously]
         mAuth.signInAnonymously()
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -278,26 +183,6 @@ EditText etName;
                     }
                 });
         // [END signin_anonymously]
-    }
-
-
-    @VisibleForTesting
-    public ProgressDialog mProgressDialog;
-
-    public void showProgressDialog() {
-        if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(this);
-            mProgressDialog.setMessage("loading");
-            mProgressDialog.setIndeterminate(true);
-        }
-
-        mProgressDialog.show();
-    }
-
-    public void hideProgressDialog() {
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.dismiss();
-        }
     }
 
 
@@ -337,6 +222,7 @@ EditText etName;
         }
     }
 
+    int RESULT_LOAD_IMAGE=346;
     void LoadImage(){
         Intent i = new Intent(
                 Intent.ACTION_PICK,
@@ -344,4 +230,124 @@ EditText etName;
 
         startActivityForResult(i, RESULT_LOAD_IMAGE);
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+            ivUserImage.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+        }
+    }
+
+
+
+    // loading display
+
+    @VisibleForTesting
+    public ProgressDialog mProgressDialog;
+
+    public void showProgressDialog() {
+        if (mProgressDialog == null) {
+            mProgressDialog = new ProgressDialog(this);
+            mProgressDialog.setMessage("loading");
+            mProgressDialog.setIndeterminate(true);
+        }
+
+        mProgressDialog.show();
+    }
+
+    public void hideProgressDialog() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+    }
+
+    // get news from server
+    public class MyAsyncTaskgetNews extends AsyncTask<String, String, String> {
+        @Override
+        protected void onPreExecute() {
+            //before works
+        }
+        @Override
+        protected String  doInBackground(String... params) {
+            // TODO Auto-generated method stub
+            try {
+                String NewsData;
+                //define the url we have to connect with
+                URL url = new URL(params[0]);
+                //make connect with url and send request
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                //waiting for 7000ms for response
+                urlConnection.setConnectTimeout(7000);//set timeout to 5 seconds
+
+                try {
+                    //getting the response data
+                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                    //convert the stream to string
+                    Operations operations=new Operations(getApplicationContext());
+                    NewsData = operations.ConvertInputToStringNoChange(in);
+                    //send to display data
+                    publishProgress(NewsData);
+                } finally {
+                    //end connection
+                    urlConnection.disconnect();
+                }
+
+            }catch (Exception ex){}
+            return null;
+        }
+        protected void onProgressUpdate(String... progress) {
+
+            try {
+                JSONObject json= new JSONObject(progress[0]);
+                //display response data
+                if (json.getString("msg")==null)
+                    return;
+                if (json.getString("msg").equalsIgnoreCase("user is added")) {
+                    Toast.makeText(getApplicationContext(), json.getString("msg"), Toast.LENGTH_LONG).show();
+//login
+                    String url="http://10.0.2.2/~hussienalrubaye/twitterserver/login.php?email="+etEmail.getText().toString()+"&password="+etPassword.getText().toString() ;
+
+                    new MyAsyncTaskgetNews().execute(url);
+                }
+
+                if (json.getString("msg").equalsIgnoreCase("Pass Login")) {
+                    JSONArray UserInfo=new JSONArray( json.getString("info"));
+                    JSONObject UserCreintal= UserInfo.getJSONObject(0);
+                    //Toast.makeText(getApplicationContext(),UserCreintal.getString("user_id"),Toast.LENGTH_LONG).show();
+                    hideProgressDialog();
+                    SaveSettings saveSettings= new SaveSettings(getApplicationContext());
+                    saveSettings.SaveData(UserCreintal.getString("user_id"));
+                    finish(); //close this activity
+                }
+
+            } catch (Exception ex) {
+                Log.d("er",  ex.getMessage());
+            }
+
+
+        }
+
+        protected void onPostExecute(String  result2){
+
+
+        }
+
+
+
+
+    }
+
+
 }

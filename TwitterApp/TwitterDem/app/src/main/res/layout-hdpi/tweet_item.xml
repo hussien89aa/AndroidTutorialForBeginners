@@ -23,7 +23,7 @@
         android:gravity="center"
         android:layoutDirection="rtl"
         android:textAlignment="center"
-    android:layout_marginRight="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:paddingRight="5dp"
@@ -31,10 +31,10 @@
         android:paddingTop="2dp"
         android:paddingBottom="1dp"
 
-       >
+        >
 
         <LinearLayout
-             android:orientation="horizontal"
+            android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"
@@ -49,17 +49,17 @@
             android:paddingLeft="3dp"
             android:paddingRight="3dp">
 
-                <TextView
-                    android:paddingEnd="1dp"
-                    android:layout_weight="0"
-                    android:background="@color/white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="2015-12-11"
-                    android:textSize="10dp"
+            <TextView
+                android:paddingEnd="1dp"
+                android:layout_weight="0"
+                android:background="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="2015-12-11"
+                android:textSize="10dp"
 
-                    android:id="@+id/txt_tweet_date" />
+                android:id="@+id/txt_tweet_date" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -79,14 +79,14 @@
                 android:textColor="#0894f8"
                 android:textSize="12dp"
                 android:textStyle="bold"
-                 android:paddingRight="3dp" />
+                android:paddingRight="3dp" />
 
 
 
             <ImageView
                 android:layout_width="50px"
                 android:layout_height="50px"
-    android:src="@drawable/ic_account_circle_black_24dp"
+                android:src="@drawable/ic_account_circle_black_24dp"
                 android:id="@+id/picture_path"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
@@ -104,7 +104,7 @@
             android:fontFamily="sans-serif-medium"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-           android:paddingRight="5dp"
+            android:paddingRight="5dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Love new twitter feathers, looking forword for new addation feather"
             android:id="@+id/txt_tweet"
@@ -135,7 +135,7 @@
             android:layout_alignBottom="@+id/txtflollower"
             android:layout_weight="0"
             android:layout_marginBottom="1dp"
-            android:layout_height="100pt" />
+            android:layout_height="90pt" />
 
         <LinearLayout
 
@@ -154,7 +154,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:id="@+id/iv_share"
-               android:layout_marginRight="8dp"
+                android:layout_marginRight="8dp"
                 android:background="@drawable/ic_favorite_border_black_24dp" />
 
         </LinearLayout>
