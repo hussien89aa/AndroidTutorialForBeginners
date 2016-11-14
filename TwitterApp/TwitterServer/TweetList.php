@@ -1,12 +1,6 @@
 <?php
  // 1- connect to db
-$host="127.0.0.1";
-$user="root";
-$password="12345";
-$database="twitter";
-$connect=  mysqli_connect($host, $user, $password, $database);
-if(mysqli_connect_errno())
-{ die("cannot connect to database field:". mysqli_connect_error());   }
+require("DBInfo.php");
  // define quesry  //StartFrom
 if ($usename=$_GET['op']==1) { // my following
 $query="select * from user_tweets where user_id in (select following_user_id from following where user_id=". $_GET['user_id'] . ") or user_id=" . $_GET['user_id'] . " order by tweet_date DESC". 
