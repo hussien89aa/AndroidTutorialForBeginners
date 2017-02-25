@@ -1,0 +1,33 @@
+ResultCallback<DriveContentsResult> contentsCallback = new ResultCallback<DriveContentsResult>() {
+    
+
+    @Override
+    public void onResult(DriveContentsResult result) {
+        if (!result.getStatus().isSuccess()) {
+            // Handle error
+            return;
+        }
+
+
+
+        //providing metadata for the new file
+        MetadataChangeSet changeSet = new MetadataChangeSet.Builder()
+                                    .setTitle(nameOfFile)   //provide nameoffile
+                                    .setMimeType("*/*")     //set mime type
+                                    .build();
+
+
+                   
+        IntentSender intentSender = Drive.DriveApi
+                                    .newCreateFileActivityBuilder()
+                                    .setInitialMetadata(metadataChangeSet)
+                                    .setInitialDriveContents(result.getDriveContents())
+                                    .build(getGoogleApiClient());
+        try {
+            startIntentSenderForResult(intentSender, 1, null, 0, 0, 0);
+        } catch (SendIntentException e) {
+            // Handle the exception
+        }
+
+    }
+};
