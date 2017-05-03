@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TicTacToyOnline</string>
+    <string name="auth_failed"> field to login</string>
+</resources>
