@@ -5,61 +5,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:padding="5dp"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context="com.hussein.tictactoygame.MainActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/etEmail"
+            android:id="@+id/etInviteEmal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="User email"
-            android:inputType="textPersonName" />
+            android:inputType="textEmailAddress" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buInvite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="buPlay"
-            android:text="Invate" />
+            android:onClick="BuInvite"
+            android:text="Invite" />
+
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/buAccept"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="buAccept"
+            android:onClick="BuAccept"
             android:text="Accept" />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/etmyemail"
-            android:layout_width="match_parent"
+            android:id="@+id/etMyEmail"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="my email"
-            android:inputType="textPersonName" />
+            android:inputType="textEmailAddress" />
 
         <Button
-            android:id="@+id/button52"
-            android:layout_width="match_parent"
+            android:id="@+id/buLogin"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:onClick="buRegister"
+            android:layout_weight="1"
+            android:onClick="BuLogin"
             android:text="Login" />
     </LinearLayout>
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -154,5 +154,7 @@
                 android:onClick="BuClick"
                 android:text=" " />
         </TableRow>
+
     </TableLayout>
+
 </LinearLayout>

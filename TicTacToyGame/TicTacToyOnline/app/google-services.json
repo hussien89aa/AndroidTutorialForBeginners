@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "369846450842",
-    "firebase_url": "https://androiddemotest-e347b.firebaseio.com",
-    "project_id": "androiddemotest-e347b",
-    "storage_bucket": "androiddemotest-e347b.appspot.com"
+    "project_number": "630884553037",
+    "firebase_url": "https://tictactoyonline.firebaseio.com",
+    "project_id": "tictactoyonline",
+    "storage_bucket": "tictactoyonline.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:369846450842:android:875abf9254040a6a",
+        "mobilesdk_app_id": "1:630884553037:android:e7003e3e0ddd0f81",
         "android_client_info": {
-          "package_name": "com.example.hussienalrubaye.androiddemotest"
+          "package_name": "com.alrubaye.tictactoyonline"
         }
       },
       "oauth_client": [
         {
-          "client_id": "369846450842-g6ufjar7n3u4ujv1u4ptrgbbg0ocvgnt.apps.googleusercontent.com",
+          "client_id": "630884553037-ut5eq38480915ob89v1scls26lpk4d6e.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.hussienalrubaye.androiddemotest",
+            "package_name": "com.alrubaye.tictactoyonline",
             "certificate_hash": "76a07b52241638f10fb6d3cf8f6b855f929169dc"
           }
         },
         {
-          "client_id": "369846450842-f0t69e4c4ocso788qh4sujnqofuv0pr2.apps.googleusercontent.com",
+          "client_id": "630884553037-ie1rin8q242h9h26le92nqv7h6mf1brd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAwxZOuKGCy_IPtIchuIgAzukaOAxAZ7_U"
+          "current_key": "AIzaSyDeGp50LT5V1lGPQkOP4nEadC0gCA4y27A"
         }
       ],
       "services": {
@@ -40,51 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "369846450842-f0t69e4c4ocso788qh4sujnqofuv0pr2.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:369846450842:android:663c8b9a16cb6183",
-        "android_client_info": {
-          "package_name": "com.hussein.tictactoyonline"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "369846450842-tbd32qs3nfn7bju4r9bhp2lor0vfihkv.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.hussein.tictactoyonline",
-            "certificate_hash": "76a07b52241638f10fb6d3cf8f6b855f929169dc"
-          }
-        },
-        {
-          "client_id": "369846450842-f0t69e4c4ocso788qh4sujnqofuv0pr2.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAwxZOuKGCy_IPtIchuIgAzukaOAxAZ7_U"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "369846450842-f0t69e4c4ocso788qh4sujnqofuv0pr2.apps.googleusercontent.com",
+              "client_id": "630884553037-ie1rin8q242h9h26le92nqv7h6mf1brd.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

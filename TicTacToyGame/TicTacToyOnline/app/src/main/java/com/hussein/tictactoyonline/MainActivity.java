@@ -1,4 +1,5 @@
 package com.hussein.tictactoyonline;
+
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -23,56 +24,49 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+
+    EditText etInviteEMail;
+    EditText etMyEmail;
+    Button buLogin;
+
+    //Firebase
     private FirebaseAnalytics mFirebaseAnalytics;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    public static final String TAG ="Login" ;
-    EditText etEmail;
-    EditText etMyEmail;
-    String uid;
-    String email;
-String PlayersSession;
+String MyEmail;
+String uid;
+    // Write a message to the database
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        etInviteEMail=(EditText)findViewById(R.id.etInviteEmal);
+        etMyEmail=(EditText)findViewById(R.id.etMyEmail);
+        buLogin=(Button)findViewById(R.id.buLogin);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
-
+            public static final String TAG = "Login";
 
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    uid= user.getUid();
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" +uid);
+                    MyEmail=user.getEmail();
+                    buLogin.setEnabled(false);
+                    etMyEmail.setText(MyEmail);
 
-                        // Name, email address, and profile photo Url
-                        String name = user.getDisplayName();
-                          email = user.getEmail();
-                        //Uri photoUrl = user.getPhotoUrl();
-                       Log.d(TAG, "name:" + name);
-                       Log.d(TAG, "email:" + email);
-                    // Check if user's email is verified
-                        boolean emailVerified = user.isEmailVerified();
-
-                        // The user's ID, unique to the Firebase project. Do NOT use this value to
-                        // authenticate with your backend server, if you have one. Use
-                        // FirebaseUser.getToken() instead.
-                          uid = user.getUid();
-
-                  // Write a message to the database
-                     myRef.child("Users").child(email.substring(0,4)).child("requests").setValue(uid);
-                    IncommmingInvatations();
-
+                    myRef.child("Users").child(BeforeAt(MyEmail)).child("Request").setValue(uid);
+                    IncommingRequest();
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -80,19 +74,20 @@ String PlayersSession;
                 // ...
             }
         };
-
-
-
-        etEmail=(EditText)findViewById(R.id.etEmail);
-        etMyEmail=(EditText)findViewById(R.id.etmyemail);
-
     }
 
+    String BeforeAt(String Email){
+        String[] split= Email.split("@");
+        return split[0];
+    }
+
+    //Login
     @Override
     public void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
     }
+
     @Override
     public void onStop() {
         super.onStop();
@@ -101,9 +96,11 @@ String PlayersSession;
         }
     }
 
-    void login(String email,String password){
+    void UserLogin(String email, String password){
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    public static final String TAG ="Register" ;
+
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
@@ -112,15 +109,131 @@ String PlayersSession;
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
-
+                            Toast.makeText(getApplicationContext(), "Login fail",Toast.LENGTH_SHORT).show();
                         }
 
                         // ...
                     }
                 });
+    }
+
+    public void BuInvite(View view) {
+        Log.d("Invate",etInviteEMail.getText().toString());
+        myRef.child("Users")
+                .child(BeforeAt(etInviteEMail.getText().toString())).child("Request").push().setValue(MyEmail);
+
+        // Jena //Laya  ="Laya:Jena"
+        StartGame(BeforeAt(etInviteEMail.getText().toString()) +":"+ BeforeAt(MyEmail));
+        MySample="X";
 
     }
+    void IncommingRequest(){
+
+        // Read from the database
+        myRef.child("Users").child(BeforeAt(MyEmail)).child("Request")
+                .addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                try{
+                    HashMap<String,Object> td=(HashMap<String,Object>) dataSnapshot.getValue();
+                    if (td!=null){
+
+                        String value;
+                        for(String key:td.keySet()){
+                            value=(String) td.get(key);
+                            Log.d("User request",value);
+                            etInviteEMail.setText(value);
+                            ButtonColor();
+                            myRef.child("Users").child(BeforeAt(MyEmail)).child("Request").setValue(uid);
+                            break;
+                        }
+                    }
+
+                }catch (Exception ex){}
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+            }
+        });
+
+    }
+    void ButtonColor(){
+etInviteEMail.setBackgroundColor(Color.RED);
+    }
+
+    public void BuAccept(View view) {
+        Log.d("Accept",etInviteEMail.getText().toString());
+        myRef.child("Users")
+                .child(BeforeAt(etInviteEMail.getText().toString())).child("Request").push().setValue(MyEmail);
+        //Laya// Jena  ="Laya:Jena"
+        StartGame(BeforeAt( BeforeAt(MyEmail) + ":"+ etInviteEMail.getText().toString()) );
+        MySample="O";
+    }
+
+    // PlayerGameID= "Laya:Jena"
+
+    String PlayerSession="";
+
+    String MySample="X";
+    void StartGame(String PlayerGameID){
+        PlayerSession=PlayerGameID;
+        //TODO: implement later
+        myRef.child("Playing").child(PlayerGameID).removeValue();
+
+
+        // Read from the database
+        myRef.child("Playing").child(PlayerGameID)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        try{
+                            Player1.clear();
+                            Player2.clear();
+                            ActivePlayer=2;
+                            HashMap<String,Object> td=(HashMap<String,Object>) dataSnapshot.getValue();
+                            if (td!=null){
+
+                                String value;
+
+                                for(String key:td.keySet()){
+                                    value=(String) td.get(key);
+                                    if(!value.equals(BeforeAt(MyEmail)))
+                                        ActivePlayer=MySample=="X"?1:2;
+                                    else
+                                        ActivePlayer=MySample=="X"?2:1;
+
+                                    String[] splitID= key.split(":");
+                                    AutoPlay(Integer.parseInt(splitID[1]));
+
+                                }
+                            }
+
+
+                        }catch (Exception ex){}
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+
+                    }
+                });
+    }
+
+
+    public void BuLogin(View view) {
+       // Log.d("Login",etMyEmail.getText().toString());
+        UserLogin(etMyEmail.getText().toString(),"hussein");
+    }
+
     public void BuClick(View view) {
+        // game not started yet
+      if (PlayerSession.length()<=0)
+        return;
+
         Button buSelected= (Button) view;
         int CellID=0;
         switch ((buSelected.getId())){
@@ -161,15 +274,21 @@ String PlayersSession;
                 CellID=9;
                 break;
         }
-        myRef.child("Playing").child(PlayersSession).child(CountSteps+"CellID:"+String.valueOf(CellID)).setValue(email.substring(0,4));
+
+
+
+       myRef.child("Playing").child(PlayerSession).child( "CellID:"+CellID).setValue(BeforeAt(MyEmail));
+
+
+
 
     }
 
+
     int ActivePlayer=1; // 1- for first , 2 for second
-    int CountSteps=0; //number of used cells
     ArrayList<Integer> Player1= new ArrayList<Integer>();// hold player 1 data
     ArrayList<Integer> Player2= new ArrayList<Integer>();// hold player 2 data
-    void PlayGame(int CellID,Button buSelected ){
+    void PlayGame(int CellID,Button buSelected){
 
         Log.d("Player:",String.valueOf(CellID));
 
@@ -179,9 +298,8 @@ String PlayersSession;
             Player1.add(CellID);
 
 
-
         }
-        else {
+        else if (ActivePlayer==2){
             buSelected.setText("O");
             buSelected.setBackgroundColor(Color.BLUE);
             Player2.add(CellID);
@@ -261,7 +379,7 @@ String PlayersSession;
 
     }
 
-    void AutoPlay(int CellID ){
+    void AutoPlay(int CellID){
 
         Button buSelected;
         switch (CellID){
@@ -306,119 +424,7 @@ String PlayersSession;
                 break;
 
         }
-        PlayGame(CellID, buSelected );
+        PlayGame(CellID, buSelected);
     }
 
-
-    public void buPlay(View view) {
-      //  myRef.child("Games").push().child("Request").removeValue();
-       String value=email.substring(0,4) + ":"+ etEmail.getText().toString().substring(0,4);
-        myRef.child("Users").child(etEmail.getText().toString().substring(0,4)).child("requests")
-                .push().setValue(email);
-        StartGame(value);
-    }
-    void IncommmingInvatations(){
-        myRef.child("Users").child(email.substring(0,4)).child("requests")
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        // This method is called once with the initial value and again
-                        // whenever data at this location is updated.
-
-                     try {
-                         Map<String, Object> td = (HashMap<String, Object>) dataSnapshot.getValue();
-                         if (td != null)  //no one allow you to find him
-                         {
-                             String value;
-
-                             for (  String key : td.keySet()) {
-                                 value=(String)td.get(key);
-
-                                     Log.w("Get new inviation",value );
-
-                                     ColorButton();
-                                     etEmail.setText(value.substring(0,4));
-                                     myRef.child("Users").child(email.substring(0,4)).child("requests").setValue(uid);
-                                     break;
-
-
-                             }
-                         }
-                     }catch (Exception ex){}
-
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError error) {
-                        // Failed to read value
-                        Log.w(TAG, "Failed to read value.", error.toException());
-                    }
-                });
-
-    }
-    void StartGame(final String Players){
-        PlayersSession=Players;
-        myRef.child("Playing").child(Players).removeValue();
-        myRef.child("Playing").child(Players)
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        // This method is called once with the initial value and again
-                        // whenever data at this location is updated.
-
-                     try {
-                         ActivePlayer=2;
-                         Player1.clear();
-                         Player2.clear();
-                         Map<String, Object> td = (HashMap<String, Object>) dataSnapshot.getValue();
-                         if (td != null)  //no one allow you to find him
-                         {
-
-                             String FirstPlayer="X"; //default
-                             for (  String key : td.keySet()) {
-                                 String  value=(String)td.get(key);
-                                 if(!FirstPlayer.equals(value))
-                                 ActivePlayer=ActivePlayer==2?1:2;
-                                 FirstPlayer=value;
-
-                                 AutoPlay(Integer.valueOf(key.substring(8)) );
-                                 Log.w("Get new inviation",value );
-
-
-
-
-                             }
-                             CountSteps=td.size();
-                         }
-                     }catch (Exception ex){
-                         ex.printStackTrace();
-                     }
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError error) {
-                        // Failed to read value
-                        Log.w(TAG, "Failed to read value.", error.toException());
-                    }
-                });
-
-    }
-
-    void ColorButton(){
-        etEmail.setBackgroundColor(Color.RED);
-    }
-
-    public void buRegister(View view) {
-
-        login(etMyEmail.getText().toString(),"hussein");
-    }
-
-    public void buAccept(View view) {
-        String value= etEmail.getText().toString().substring(0,4) + ":"+ email.substring(0,4);
-        myRef.child("Users").child(etEmail.getText().toString().substring(0,4)).child("requests")
-                .push().setValue(email);
-        StartGame(value);
-    }
 }
