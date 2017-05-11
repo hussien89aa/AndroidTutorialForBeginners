@@ -96,7 +96,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LocationListener locationListener = new MyLocationListener(this);
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 35000, 10, locationListener);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3, 3, locationListener);
 
 
         myThread m_thread= new myThread();
