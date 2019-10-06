@@ -15,7 +15,7 @@ Bellow, list of open source Apps that we build in tutorial
 - [Tic Tac Toe using Firebase App](#).
 - [Facebook App using Firebase](#).
 - [MediaPlayer App](#).
-- [Alaram App](#).
+- [Alarm App](#).
 - [Notification Channel App](#).
 - [Light sensor App](#).
 - [Nimbuzz vibrate](#).
