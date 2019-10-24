@@ -2,7 +2,7 @@
 
 ### In this course you will learn how to make 17 online games, and apps for Android, using Java. Enroll using a [ 95% discount coupon](https://www.udemy.com/course/android-tutorial-for-beginners/?referralCode=BC559D7466CF58A9CC48). 
 
-Bellow, list of open source Apps that we build in tutorial
+Below, a list of open source Apps is given that we are going to build in this tutorial :
 
 - [Find My Age  App](#).
 - [Tic Tac Toe Local App](#).
