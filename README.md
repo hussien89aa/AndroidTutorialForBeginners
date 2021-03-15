@@ -1,6 +1,6 @@
  # The Complete Android App Development
 
-### In this course you will learn how to make 17 online games, and apps for Android, using Java. Enroll using a [ 95% discount coupon](https://www.udemy.com/course/android-tutorial-for-beginners/?referralCode=BC559D7466CF58A9CC48). 
+### In this course you will learn how to make 17 online games, and apps for Android, using Java. Enroll using a [ FREE Youtube Link](https://www.youtube.com/channel/UCVNrwqQVKuQtnHHDfuFKc4w/videos). 
 
 Bellow, list of open source Apps that we build in tutorial
 
