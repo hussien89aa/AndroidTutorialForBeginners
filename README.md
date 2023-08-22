@@ -1,6 +1,6 @@
  # The Complete Android App Development
 
-### In this course you will learn how to make 17 online games, and apps for Android, using Java. Watch using a [ FREE Youtube Link](https://www.youtube.com/channel/UCVNrwqQVKuQtnHHDfuFKc4w/videos). 
+## In this course i will learn how to make 17 online games, and apps for Android, using Java. Watch using a [ FREE Youtube Link](https://www.youtube.com/channel/UCVNrwqQVKuQtnHHDfuFKc4w/videos). 
 
 Bellow, list of open source Apps that we build in tutorial
 
